@@ -1,0 +1,88 @@
+
+:root {
+  --bg: #07111f;
+  --bg-soft: #0d1a2b;
+  --panel: rgba(17, 29, 46, 0.84);
+  --panel-solid: #111d2e;
+  --line: rgba(138, 161, 194, 0.18);
+  --text: #edf4ff;
+  --muted: #93a4bf;
+  --primary: #8db6ff;
+  --accent: #79f7d4;
+  --shadow: 0 16px 50px rgba(0, 0, 0, 0.28);
+  --radius: 24px;
+  --radius-sm: 16px;
+  --max: 1160px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, rgba(77,126,255,0.18), transparent 36%), linear-gradient(180deg, #08111d 0%, #07111f 100%);
+  color: var(--text);
+  min-height: 100vh;
+}
+a { color: inherit; text-decoration: none; }
+button { font: inherit; }
+code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.page-shell { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+.site-nav { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(16px); background: rgba(7,17,31,0.72); border-bottom: 1px solid var(--line); }
+.nav-inner { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; min-height: 72px; gap: 18px; }
+.brand { font-weight: 700; letter-spacing: -0.02em; }
+.nav-links { display: flex; gap: 10px; flex-wrap: wrap; }
+.nav-button, .button, .tile-button, .ghost-button, .copy-button {
+  border: 1px solid var(--line); background: rgba(255,255,255,0.02); color: var(--text);
+  padding: 12px 16px; border-radius: 999px; cursor: pointer;
+  transition: transform .18s ease, border-color .18s ease, background .18s ease, color .18s ease;
+}
+.nav-button:hover, .button:hover, .tile-button:hover, .ghost-button:hover, .copy-button:hover { transform: translateY(-1px); border-color: rgba(121,247,212,0.45); }
+.button.primary, .tile-button.primary { background: linear-gradient(135deg, var(--accent), #8dc7ff); color: #07111f; border: none; font-weight: 700; }
+.ghost-button { background: transparent; }
+.button-row, .inline-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero { padding: 84px 0 56px; }
+.hero-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 24px; align-items: stretch; }
+.hero-card, .panel, .plan-card, .guide-card, .content-card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+.hero-copy { padding: 44px; }
+.eyebrow { color: var(--accent); font-size: .9rem; letter-spacing: .08em; text-transform: uppercase; }
+.hero h1, .page-header h1 { font-size: clamp(2.6rem, 6vw, 5rem); line-height: .95; letter-spacing: -0.05em; margin: 12px 0 16px; }
+.page-header h1 { font-size: clamp(2.2rem, 5vw, 4rem); }
+.hero p, .page-header p, .section-heading p, .muted, li, .content-card p, .plan-card p, .guide-card p, .tile-button p { color: var(--muted); }
+.hero-visual { padding: 24px; display: flex; align-items: center; justify-content: center; min-height: 380px; position: relative; overflow: hidden; }
+.flow { width: 100%; max-width: 420px; display: grid; gap: 14px; }
+.flow-node { background: rgba(255,255,255,0.03); border: 1px solid var(--line); border-radius: 20px; padding: 18px 20px; display: flex; justify-content: space-between; align-items: center; }
+.flow-arrow { text-align: center; color: var(--accent); font-size: 1.25rem; }
+main section { padding: 18px 0 52px; }
+.section-heading { margin-bottom: 18px; }
+.section-heading h2 { font-size: clamp(1.8rem, 3vw, 2.7rem); letter-spacing: -0.04em; margin: 0 0 8px; }
+.grid-3, .plans-grid, .guide-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+.tile-button { text-align: left; border-radius: var(--radius-sm); padding: 22px; min-height: 160px; background: rgba(255,255,255,0.03); }
+.tile-button h3, .plan-card h3, .guide-card h3, .content-card h2 { margin: 0 0 10px; font-size: 1.22rem; }
+.plan-card, .guide-card, .content-card { padding: 24px; }
+.plan-card.featured { outline: 1px solid rgba(121,247,212,0.38); }
+.plan-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+.plan-subtitle { color: var(--accent); font-size: .95rem; }
+.price { color: var(--accent); font-weight: 700; }
+.plan-card ul { padding-left: 18px; min-height: 112px; }
+.kicker { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px; background: rgba(121,247,212,0.08); color: var(--accent); font-size: .92rem; margin-bottom: 12px; }
+.page-header { padding: 56px 0 24px; }
+.step-list { margin: 0; padding-left: 20px; display: grid; gap: 12px; }
+.code-card { background: #091220; border: 1px solid var(--line); border-radius: 20px; overflow: hidden; }
+.code-card-header { display: flex; justify-content: space-between; gap: 10px; align-items: flex-start; padding: 14px 16px; border-bottom: 1px solid var(--line); background: rgba(255,255,255,.02); }
+.code-card-hint { color: var(--muted); font-size: .86rem; margin-top: 4px; }
+.code-card pre { margin: 0; padding: 18px; overflow: auto; color: #e8f0ff; font-size: .94rem; line-height: 1.5; white-space: pre-wrap; }
+.badge-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+.badge { padding: 8px 12px; border-radius: 999px; background: rgba(141,182,255,0.08); color: var(--primary); border: 1px solid var(--line); }
+.notice { padding: 14px 16px; border-radius: 18px; border: 1px solid rgba(121,247,212,0.18); background: rgba(121,247,212,0.06); }
+.warning { border-color: rgba(255, 194, 102, .22); background: rgba(255, 194, 102, .08); }
+.footer { padding: 26px 0 42px; color: var(--muted); }
+.footer-inner { border-top: 1px solid var(--line); padding-top: 18px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.mega-code { display: grid; gap: 18px; }
+.center-card { max-width: 760px; margin: 0 auto; text-align: center; }
+@media (max-width: 980px) {
+  .hero-grid, .grid-3, .plans-grid, .guide-grid, .grid-2 { grid-template-columns: 1fr; }
+  .hero-copy { padding: 30px; }
+  .hero-visual { min-height: 260px; }
+  .nav-inner { padding: 10px 0; align-items: flex-start; }
+}

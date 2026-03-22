@@ -1,0 +1,1 @@
+Personal MCP Server website files. Main public product is a single package plus custom help. Setup guide is organized around defaults, generated secrets, domain values, account-based API values, and the remaining integration blocks at the end of the guide.

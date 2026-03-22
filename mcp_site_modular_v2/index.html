@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal MCP Server</title>
+  <meta name="description" content="A ready-to-deploy personal MCP server scaffold with Google and GitHub support, Render deployment notes, and a modular Python tools folder." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <div data-nav></div>
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero-grid">
+        <div class="hero-card hero-copy">
+          <div class="eyebrow">Built from real use</div>
+          <h1 id="hero-title"></h1>
+          <p id="hero-body"></p>
+          <div class="badge-row">
+            <div class="badge">Google support</div>
+            <div class="badge">GitHub support</div>
+            <div class="badge">Render deployment</div>
+            <div class="badge">Modular Python tools</div>
+          </div>
+          <p class="hero-note" id="hero-note"></p>
+          <div class="button-row" style="margin-top:22px;">
+            <button class="button primary" data-buy-package>Buy the package</button>
+            <a class="ghost-button" href="setup-variables.html">Open the setup guide</a>
+          </div>
+        </div>
+        <div class="hero-card hero-visual" aria-hidden="true">
+          <div class="matrix-grid">
+            <div class="matrix-card">
+              <div class="kicker">Why it exists</div>
+              <h3>No blank-repo start</h3>
+              <p>You are buying a usable scaffold, not the idea of one. The MCP structure, auth path, and deployment notes are already laid out.</p>
+            </div>
+            <div class="matrix-card">
+              <div class="kicker">Why it helps</div>
+              <h3>Less setup drag</h3>
+              <p>Instead of re-solving the same backend pieces, you fill in your own keys, deploy, and build from something stable.</p>
+            </div>
+            <div class="matrix-card">
+              <div class="kicker">What stands out</div>
+              <h3>Easy to extend</h3>
+              <p>Add another Python tool file later, or have an AI help write one. The structure is meant to grow with you.</p>
+            </div>
+            <div class="matrix-card">
+              <div class="kicker">What you do not get</div>
+              <h3>No empty marketing fluff</h3>
+              <p>This is a practical package for people who want a real starting point and a setup they can trust.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section>
+        <div class="section-heading">
+          <h2>What you can do with it</h2>
+          <p>The goal here is straightforward: give your assistant a backend it can actually use, then leave the project open enough that you can keep extending it.</p>
+        </div>
+        <div class="grid-2">
+          <div class="content-card">
+            <h3>Good fit if you want to</h3>
+            <div id="use-case-list"></div>
+          </div>
+          <div class="content-card">
+            <h3>Helpful before you buy</h3>
+            <ul class="clean-list">
+              <li>You do not need to understand every variable before starting.</li>
+              <li>The setup guide separates defaults, secrets, and account-based values.</li>
+                          </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-heading">
+          <h2>Why this is practical</h2>
+          <p>This package is meant to get you to a working deployment faster. The value is simple: you are starting from something useful, documented, and ready to extend.</p>
+        </div>
+        <div class="grid-3" id="feature-grid"></div>
+      </section>
+
+      <section id="pricing">
+        <div class="section-heading">
+          <h2>Pricing</h2>
+          <p>The goal is to keep the main package simple enough that someone can just decide if they want it, rather than comparing tiers and getting stuck.</p>
+        </div>
+        <div class="plan-stack">
+          <article class="plan-card primary-plan">
+            <div class="kicker">Main package</div>
+            <h3>Complete MCP Package</h3>
+            <div class="price">$19 one time</div>
+            <p id="package-description"></p>
+            <div id="package-bullets"></div>
+            <div class="button-row" style="margin-top:18px;">
+              <button class="button primary" data-buy-package>Buy the package</button>
+              <a class="ghost-button" href="setup-variables.html">Read the setup guide first</a>
+            </div>
+          </article>
+          <article class="plan-card">
+            <div class="kicker">Need more than the package?</div>
+            <h3>Custom Setup</h3>
+            <div class="price">Custom pricing</div>
+            <p>For private APIs, custom tools, a different auth path, or help getting your own setup over the finish line.</p>
+            <div id="custom-bullets"></div>
+            <div class="button-row" style="margin-top:18px;">
+              <a class="button primary" href="custom-setup.html">See custom help</a>
+              <a class="ghost-button" href="contact.html">Contact me directly</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-heading">
+          <h2>How the setup works</h2>
+          <p>You are not buying a mystery box. The path is simple: get the files, push to GitHub, deploy on Render, fill in your values, and connect your assistant.</p>
+        </div>
+        <div class="grid-2">
+          <div class="content-card">
+            <div class="kicker">1</div>
+            <h3>Download the package</h3>
+            <p>Get the project files and use the guide to follow the same structure shown on this site.</p>
+          </div>
+          <div class="content-card">
+            <div class="kicker">2</div>
+            <h3>Deploy on Render</h3>
+            <p>Push the project to GitHub, connect the repo in Render, then paste the build command, start command, and environment variables.</p>
+          </div>
+          <div class="content-card">
+            <div class="kicker">3</div>
+            <h3>Choose your auth path</h3>
+            <p>Use static OAuth for full MCP client support, or use a simple bearer token path if you just want a more manual fallback.</p>
+          </div>
+          <div class="content-card">
+            <div class="kicker">4</div>
+            <h3>Keep building later</h3>
+            <p>Once it is running, add new tool modules as needed. The structure is the point: you are buying a base you can keep using.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="notice warning">Start with the main setup first. Once that is working, you can keep expanding with additional integrations and Python tool modules as needed.</div>
+      </section>
+    </main>
+  </div>
+  <div data-footer></div>
+  <script src="assets/data.js"></script>
+  <script src="assets/components.js"></script>
+  <script src="assets/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('hero-title').textContent = SITE.copy.heroTitle;
+      document.getElementById('hero-body').textContent = SITE.copy.heroBody;
+      document.getElementById('hero-note').textContent = SITE.copy.heroNote;
+      document.getElementById('use-case-list').innerHTML = Components.bulletList(SITE.copy.useCases);
+      document.getElementById('feature-grid').innerHTML = SITE.copy.featureCards.map((card) => `
+        <article class="content-card">
+          <h3>${card.title}</h3>
+          <p>${card.body}</p>
+        </article>
+      `).join('');
+      document.getElementById('package-description').textContent = SITE.package.description;
+      document.getElementById('package-bullets').innerHTML = Components.bulletList(SITE.package.bullets);
+      document.getElementById('custom-bullets').innerHTML = Components.bulletList(SITE.custom.bullets);
+    });
+  </script>
+</body>
+</html>

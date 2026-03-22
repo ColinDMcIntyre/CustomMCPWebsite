@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>More Integrations | Personal MCP Server</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <div data-nav></div>
+  <div class="page-shell">
+    <header class="page-header">
+      <div class="kicker">More integrations</div>
+      <h1>Additional setup blocks included with the package</h1>
+      <p>These are the same integration blocks listed at the end of the setup guide. They are here in one place if you want a quick reference later.</p>
+    </header>
+
+    <main>
+      <section class="grid-2">
+        <div class="content-card">
+          <h2>Bearer token fallback</h2>
+          <p>Add this when you want a simple manual token path for testing or scripts.</p>
+          <div id="bearer-card"></div>
+        </div>
+        <div class="content-card">
+          <h2>Google service account</h2>
+          <p>Add this when you want to use a service account path instead of the normal refresh-token setup.</p>
+          <div id="service-account-card"></div>
+        </div>
+      </section>
+      <section class="grid-2">
+        <div class="content-card">
+          <h2>Google Maps</h2>
+          <p>Add this when you want the Maps-related tools working.</p>
+          <div id="maps-card"></div>
+        </div>
+        <div class="content-card">
+          <h2>Alpaca</h2>
+          <p>Add this when you want the Alpaca-related tools working.</p>
+          <div id="alpaca-card"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <div data-footer></div>
+  <script src="assets/data.js"></script>
+  <script src="assets/components.js"></script>
+  <script src="assets/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('bearer-card').innerHTML = Components.codeCard('Bearer token block', SITE.env.bearerBlock, 'bearer', { hint: 'Manual token path' });
+      document.getElementById('service-account-card').innerHTML = Components.codeCard('Service account block', SITE.env.serviceAccountBlock, 'service-account', { hint: 'Use when needed' });
+      document.getElementById('maps-card').innerHTML = Components.codeCard('Maps block', SITE.env.mapsBlock, 'maps', { hint: 'Use when needed' });
+      document.getElementById('alpaca-card').innerHTML = Components.codeCard('Alpaca block', SITE.env.alpacaBlock, 'alpaca', { hint: 'Use when needed' });
+    });
+  </script>
+</body>
+</html>

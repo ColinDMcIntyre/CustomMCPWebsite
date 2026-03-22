@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Setup Guide | Personal MCP Server</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <div data-nav></div>
+  <div class="page-shell">
+    <header class="page-header">
+      <div class="kicker">Setup & Variables</div>
+      <h1>Set it up without getting buried in variables</h1>
+      <p>This guide is organized in the order most people actually need: defaults first, generated secrets second, your account-based values after that, and the rest at the end. Most of the work is copy and paste.</p>
+      <div class="button-row">
+        <button class="button primary" data-buy-package>Buy the package</button>
+        <a class="ghost-button" href="index.html">Back home</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="grid-2">
+        <div class="content-card">
+          <h2>What you are setting up</h2>
+          <ul class="clean-list">
+            <li>A personal MCP endpoint mounted at <code>/mcp</code></li>
+            <li>Static MCP OAuth support for clients that expect OAuth</li>
+            <li>Optional static bearer token fallback for simple testing</li>
+            <li>Google OAuth refresh-token mode for personal use</li>
+            <li>GitHub variables for the included GitHub tooling</li>
+          </ul>
+        </div>
+        <div class="content-card">
+          <h2>Before you start</h2>
+          <ol class="step-list">
+            <li>Create or log into GitHub.</li>
+            <li>Create or log into Render.</li>
+            <li>Have your Google OAuth client ready or be prepared to create it.</li>
+            <li>Have a GitHub personal access token if you want the GitHub tools working right away.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-heading">
+          <h2>Render commands</h2>
+          <p>Use the same build and start commands shown here when you create the Render web service.</p>
+        </div>
+        <div class="grid-2">
+          <div id="build-card"></div>
+          <div id="start-card"></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-heading">
+          <h2>How the auth options work</h2>
+          <p>The server supports two MCP auth paths at the same time. Most people should use static OAuth and can also generate a bearer token for manual testing or scripts if they want that path ready. You do not need to fill every value on day one.</p>
+        </div>
+        <div class="grid-2">
+          <div class="content-card">
+            <h3>Recommended: static OAuth</h3>
+            <p>Use this for ChatGPT Developer Mode or any MCP client that expects an OAuth flow. This build uses a static client ID and secret, not dynamic client registration.</p>
+          </div>
+          <div class="content-card">
+            <h3>Bearer token path</h3>
+            <p>Use this if you want a simple token for manual testing, scripts, or a backup access path.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-heading">
+          <h2>Copy these in order</h2>
+          <p>You do not need every block below. Start with the defaults, generate the secrets, replace your Render domain, then fill in your Google and GitHub values.</p>
+        </div>
+
+        <details class="accordion" open>
+          <summary>
+            <div>
+              <strong>Step 1 — Defaults already chosen for you</strong>
+              <div class="muted">These are the low-friction values most people can just copy as-is.</div>
+            </div>
+            <span>Open</span>
+          </summary>
+          <div class="accordion-body" id="defaults-card"></div>
+        </details>
+
+        <details class="accordion" open>
+          <summary>
+            <div>
+              <strong>Step 2 — Generate your secrets</strong>
+              <div class="muted">These are password-like values. Generate them once, then paste them into Render. These are password-like values. Generate them once, then paste them into Render.</div>
+            </div>
+            <span>Open</span>
+          </summary>
+          <div class="accordion-body">
+            <div class="secret-grid">
+              <div class="secret-row">
+                <div>
+                  <div class="secret-label">MCP_OAUTH_CLIENT_SECRET</div>
+                  <div class="small-note">Used by the static MCP OAuth client.</div>
+                </div>
+                <input class="code-input" id="oauth-client-secret" data-key="MCP_OAUTH_CLIENT_SECRET" value="" placeholder="Generate a secret" />
+                <button class="generate-button" data-generate-target="oauth-client-secret">Generate</button>
+              </div>
+              <div class="secret-row">
+                <div>
+                  <div class="secret-label">MCP_TOKEN_SIGNING_SECRET</div>
+                  <div class="small-note">Used to sign MCP access and refresh tokens.</div>
+                </div>
+                <input class="code-input" id="token-signing-secret" data-key="MCP_TOKEN_SIGNING_SECRET" value="" placeholder="Generate a secret" />
+                <button class="generate-button" data-generate-target="token-signing-secret" data-length="64">Generate</button>
+              </div>
+              <div class="secret-row">
+                <div>
+                  <div class="secret-label">MCP_SERVER_BEARER_TOKEN</div>
+                  <div class="small-note">Use this when you want a simple manual token path for testing or scripts.</div>
+                </div>
+                <input class="code-input" id="bearer-secret" data-key="MCP_SERVER_BEARER_TOKEN" value="" placeholder="Generate a secret" />
+                <button class="generate-button" data-generate-target="bearer-secret">Generate</button>
+              </div>
+              <div class="secret-row">
+                <div>
+                  <div class="secret-label">OAUTH_STATE_SECRET</div>
+                  <div class="small-note">Used to protect the OAuth state flow.</div>
+                </div>
+                <input class="code-input" id="oauth-state-secret" data-key="OAUTH_STATE_SECRET" value="" placeholder="Generate a secret" />
+                <button class="generate-button" data-generate-target="oauth-state-secret">Generate</button>
+              </div>
+            </div>
+            <div class="button-row" style="margin-top:16px;">
+              <button class="copy-button" data-copy-fields="oauth-client-secret,token-signing-secret,bearer-secret,oauth-state-secret">Copy generated secret block</button>
+            </div>
+          </div>
+        </details>
+
+        <details class="accordion" open>
+          <summary>
+            <div>
+              <strong>Step 3 — Replace your Render domain</strong>
+              <div class="muted">Change the placeholder domain to your actual Render service domain.</div>
+            </div>
+            <span>Open</span>
+          </summary>
+          <div class="accordion-body" id="domain-card"></div>
+        </details>
+
+        <details class="accordion" open>
+          <summary>
+            <div>
+              <strong>Step 4 — Add your Google values</strong>
+              <div class="muted">Recommended path: Google OAuth refresh-token mode for personal use.</div>
+            </div>
+            <span>Open</span>
+          </summary>
+          <div class="accordion-body">
+            <div id="google-card"></div>
+          <div class="callout" style="margin-top:16px;">
+          To generate a Google refresh token, temporarily set <code>EXPOSE_REFRESH_TOKEN_IN_CALLBACK=true</code>, then open <code>https://your-render-site.onrender.com/oauth/start</code>. Complete the Google login flow, copy the refresh token from the callback response, save it in Render, and then turn <code>EXPOSE_REFRESH_TOKEN_IN_CALLBACK</code> back to <code>false</code>.
+          </div>
+          </details>
+
+        <details class="accordion" open>
+          <summary>
+            <div>
+              <strong>Step 5 — Add your GitHub values</strong>
+              <div class="muted">GitHub is included in this package, so set these if you want the GitHub tools working right away.</div>
+            </div>
+            <span>Open</span>
+          </summary>
+          <div class="accordion-body" id="github-card"></div>
+        </details>
+
+        <details class="accordion">
+          <summary>
+            <div>
+              <strong>Step 6 — Add the rest when you want them</strong>
+              <div class="muted">The core setup above is enough to get the main server working. The blocks below are part of the package too. If you leave them out for now, those specific tools just will not work yet.</div>
+            </div>
+            <span>Open</span>
+          </summary>
+          <div class="accordion-body">
+            <div class="grid-2">
+              <div id="bearer-card"></div>
+              <div id="service-account-card"></div>
+            </div>
+            <div class="grid-2" style="margin-top:18px;">
+              <div id="maps-card"></div>
+              <div id="alpaca-card"></div>
+            </div>
+          </div>
+        </details>
+      </section>
+
+      <section>
+        <div class="section-heading">
+          <h2>How the static OAuth setup works</h2>
+          <p>This server is set up around static MCP OAuth as the main recommendation. That keeps the path clearer for ChatGPT Developer Mode and similar MCP clients, while still letting you keep a token fallback if you want one.</p>
+        </div>
+        <div class="grid-2">
+          <div class="content-card">
+            <h3>Use static OAuth when</h3>
+            <ul class="clean-list">
+              <li>You want cleaner MCP client support.</li>
+              <li>You are connecting through ChatGPT Developer Mode.</li>
+              <li>You want a normal OAuth-style path with refresh tokens.</li>
+            </ul>
+          </div>
+          <div class="content-card">
+            <h3>Use token fallback when</h3>
+            <ul class="clean-list">
+              <li>You want a simpler manual test path.</li>
+              <li>You are hitting the endpoint yourself from a script.</li>
+              <li>You want a backup auth path in case you need it later.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="notice warning" id="warning-text"></div>
+      </section>
+    </main>
+  </div>
+  <div data-footer></div>
+  <script src="assets/data.js"></script>
+  <script src="assets/components.js"></script>
+  <script src="assets/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('build-card').innerHTML = Components.codeCard('Build command', SITE.env.renderBuild, 'build-command', { hint: 'Render → Build Command' });
+      document.getElementById('start-card').innerHTML = Components.codeCard('Start command', SITE.env.renderStart, 'start-command', { hint: 'Render → Start Command' });
+      document.getElementById('defaults-card').innerHTML = Components.codeCard('Defaults block', SITE.env.defaults, 'defaults', { hint: 'Copy first' });
+      document.getElementById('domain-card').innerHTML = Components.codeCard('Domain block', SITE.env.domainBlock, 'domain', { hint: 'Replace your-app.onrender.com with your actual Render domain' });
+      document.getElementById('google-card').innerHTML = Components.codeCard('Google OAuth block', SITE.env.oauthGoogleBlock, 'google', { hint: 'Paste your own values here' });
+      document.getElementById('github-card').innerHTML = Components.codeCard('GitHub block', SITE.env.githubBlock, 'github', { hint: 'Set these if you want the GitHub tools working' });
+      document.getElementById('bearer-card').innerHTML = Components.codeCard('Bearer token block', SITE.env.bearerBlock, 'bearer', { hint: 'Add this when you want a simple manual token path' });
+      document.getElementById('service-account-card').innerHTML = Components.codeCard('Service account block', SITE.env.serviceAccountBlock, 'service-account', { hint: 'Add this when you want a service account path' });
+      document.getElementById('maps-card').innerHTML = Components.codeCard('Google Maps block', SITE.env.mapsBlock, 'maps', { hint: 'Add this when you want the Maps tools working' });
+      document.getElementById('alpaca-card').innerHTML = Components.codeCard('Alpaca block', SITE.env.alpacaBlock, 'alpaca', { hint: 'Add this when you want the Alpaca tools working' });
+      document.getElementById('warning-text').textContent = SITE.env.warning;
+    });
+  </script>
+</body>
+</html>

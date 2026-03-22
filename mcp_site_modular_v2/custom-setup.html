@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Custom Help | Personal MCP Server</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <div data-nav></div>
+  <div class="page-shell">
+    <header class="page-header">
+      <div class="kicker">Custom Setup</div>
+      <h1>When the package is close, but not enough</h1>
+      <p>Use this path if you need a private API, a different workflow, a more specific deployment setup, or direct help extending the scaffold around your own project.</p>
+      <div class="button-row">
+        <a class="button primary" href="contact.html">Contact me</a>
+        <a class="ghost-button" href="index.html">Back home</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="grid-2">
+        <div class="content-card">
+          <h2>Good reasons to ask for custom help</h2>
+          <div id="custom-bullets"></div>
+        </div>
+        <div class="content-card">
+          <h2>What this is not</h2>
+          <ul class="clean-list">
+            <li>Not a vague consulting funnel.</li>
+            <li>Not a giant agency process.</li>
+            <li>Just a direct way to ask for something more specific than the base package.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </div>
+  <div data-footer></div>
+  <script src="assets/data.js"></script>
+  <script src="assets/components.js"></script>
+  <script src="assets/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('custom-bullets').innerHTML = Components.bulletList(SITE.custom.bullets);
+    });
+  </script>
+</body>
+</html>

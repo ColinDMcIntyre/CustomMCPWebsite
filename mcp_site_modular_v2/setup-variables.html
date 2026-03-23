@@ -231,6 +231,7 @@
   <script src="assets/app.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('root-directory-card').innerHTML = Components.codeCard('Root directory', SITE.env.rootDirectory, 'root-directory', { hint: 'Render → Root Directory' });
       document.getElementById('build-card').innerHTML = Components.codeCard('Build command', SITE.env.renderBuild, 'build-command', { hint: 'Render → Build Command' });
       document.getElementById('start-card').innerHTML = Components.codeCard('Start command', SITE.env.renderStart, 'start-command', { hint: 'Render → Start Command' });
       document.getElementById('defaults-card').innerHTML = Components.codeCard('Defaults block', SITE.env.defaults, 'defaults', { hint: 'Copy first' });
@@ -241,12 +242,6 @@
       document.getElementById('service-account-card').innerHTML = Components.codeCard('Service account block', SITE.env.serviceAccountBlock, 'service-account', { hint: 'Add this when you want a service account path' });
       document.getElementById('maps-card').innerHTML = Components.codeCard('Google Maps block', SITE.env.mapsBlock, 'maps', { hint: 'Add this when you want the Maps tools working' });
       document.getElementById('alpaca-card').innerHTML = Components.codeCard('Alpaca block', SITE.env.alpacaBlock, 'alpaca', { hint: 'Add this when you want the Alpaca tools working' });
-      document.getElementById('root-directory-card').innerHTML = Components.codeCard(
-  'Root directory',
-  `ROOT_DIRECTORY = ${SITE.env.rootDirectory}`,
-  'root-directory',
-  { hint: 'Easy copy block' }
-);
       document.getElementById('warning-text').textContent = SITE.env.warning;
     });
   </script>

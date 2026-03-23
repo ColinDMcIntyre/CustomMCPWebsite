@@ -48,6 +48,7 @@
           <p>Use the same build and start commands shown here when you create the Render web service.</p>
         </div>
         <div class="grid-2">
+          <div id="root-directory-card"></div>
           <div id="build-card"></div>
           <div id="start-card"></div>
         </div>
@@ -240,6 +241,12 @@
       document.getElementById('service-account-card').innerHTML = Components.codeCard('Service account block', SITE.env.serviceAccountBlock, 'service-account', { hint: 'Add this when you want a service account path' });
       document.getElementById('maps-card').innerHTML = Components.codeCard('Google Maps block', SITE.env.mapsBlock, 'maps', { hint: 'Add this when you want the Maps tools working' });
       document.getElementById('alpaca-card').innerHTML = Components.codeCard('Alpaca block', SITE.env.alpacaBlock, 'alpaca', { hint: 'Add this when you want the Alpaca tools working' });
+      document.getElementById('root-directory-card').innerHTML = Components.codeCard(
+  'Root directory',
+  `ROOT_DIRECTORY = ${SITE.env.rootDirectory}`,
+  'root-directory',
+  { hint: 'Easy copy block' }
+);
       document.getElementById('warning-text').textContent = SITE.env.warning;
     });
   </script>

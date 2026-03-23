@@ -60,8 +60,9 @@ window.SITE = {
     ]
   },
   env: {
-    renderBuild: 'pip install -r mcp_google_server/requirements.txt',
-    renderStart: 'uvicorn mcp_google_server.app.main:app --host 0.0.0.0 --port $PORT',
+    renderBuild: 'pip install -r requirements.txt',
+    renderStart: 'uvicorn app.main:app --host 0.0.0.0 --port $PORT',
+    rootDirectory: 'mcp_google_server',
     defaults: `MCP_MOUNT_PATH=/mcp
 MCP_OAUTH_ENABLED=true
 MCP_OAUTH_CLIENT_ID=mcp-personal
